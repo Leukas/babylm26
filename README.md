@@ -46,3 +46,9 @@ All flags are explained here:
 --resume                    Resume training from a checkpoint directory. If set without a value, uses the latest checkpoint under --output_path.
 --flop_estimate             Estimate total training FLOPs from one forward-backward pass times total optimizer steps, then exit.
 ```
+
+
+## Other scripts
+To train a tokenizer, you can use `train_tokenizer.py`. We use the default parameters, except for the vocab size, which is set to the minimum size. 
+
+If you want to use our script for preprocessing, including packing, summarization, and translation, take a look at `summarize_translate.py`. 

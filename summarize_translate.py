@@ -8,7 +8,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from data import count_bytes, eng_33M_bytes, filter_to_byte_budget
 
-MODEL_NAME = "/storage/nobackup/lukas/models/Qwen2.5-3B-Instruct-bnb-4bit/"
+MODEL_NAME = "unsloth/Qwen2.5-3B-Instruct-bnb-4bit/"
 
 LANG_DATASETS = {
     "english": "BabyLM-community/BabyLM-2026-Strict",
@@ -181,7 +181,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Summarize or translate text with Qwen2.5-Instruct.")
     parser.add_argument("--mode", type=str, default="summarize", choices=["summarize", "translate"], help="summarize: shorten texts; translate: LLM-translate texts")
     parser.add_argument("--batch_size", type=int, default=256)
-    parser.add_argument("--chunk_size", type=int, default=512)
+    parser.add_argument("--chunk_size", type=int, default=512, help="Length of chunk of examples for packing.")
     parser.add_argument("--pack_mode", type=str, default="words", choices=["words", "bytes"], help="pack chunks by word count or UTF-8 byte count")
     parser.add_argument("--max_new_tokens", type=int, default=256)
     parser.add_argument("--num_beams", type=int, default=1)
