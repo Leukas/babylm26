@@ -1,7 +1,7 @@
 # BabyLM26
 
 This repo contains our code for reproducing our BabyLM2026 submission (link to paper TBA).
-You can find our trained models here: https://huggingface.co/collections/leukas/babylm-2026
+You can find our trained models and final dataset here: https://huggingface.co/collections/leukas/babylm-2026
 
 ## Prerequisites
 The scripts have been tested on:
