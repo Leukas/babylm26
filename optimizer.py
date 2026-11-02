@@ -43,6 +43,10 @@ class OptimizerGroup(optim.Optimizer):
             )
         for opt, sd in zip(self.optimizers, state_dict["optimizers"]):
             opt.load_state_dict(sd)
+        # torch.optim.Optimizer.load_state_dict replaces each child's param_group dicts with new ones; re-alias them,
+        # otherwise the LR scheduler (which writes into self.param_groups) no longer reaches AdamW/Muon after a resume
+        # and the children keep the lr saved in optimizer.pt for the rest of training.
+        self.param_groups = [pg for opt in self.optimizers for pg in opt.param_groups]
 
 
 def build_optimizer(model, learning_rate):
